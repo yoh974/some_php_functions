@@ -18,36 +18,45 @@ class API
 
     public function post_login($endpoint)
     {
-        $curl = curl_init();
+        if ($this->login !== "" && $this->password !== "") {
+            $curl = curl_init();
 
-        $login_infos = json_encode(
-            array("email" =>   $this->login,  "password" =>  $this->password));
+            $login_infos = json_encode(
+                array("email" => $this->login, "password" => $this->password));
 
-        curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POST, 1);
 
-        if ($this->login && $this->password)
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $login_infos);
+            if ($this->login && $this->password)
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $login_infos);
 
 
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'Content-Length: ' . strlen($login_infos))
-        );
-        curl_setopt($curl, CURLOPT_URL, $this->url.$endpoint);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                    'Content-Type: application/json',
+                    'Content-Length: ' . strlen($login_infos))
+            );
+            curl_setopt($curl, CURLOPT_URL, $this->url . $endpoint);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 
-        $result = curl_exec($curl);
+            $result = curl_exec($curl);
 
-        curl_close($curl);
-        $this->token = json_decode($result,true)['token'];
+            curl_close($curl);
+            $this->token = json_decode($result, true)['token'];
+        }
     }
 
     public function getFromEndpoint($endpoint)
     {
         $curl = curl_init();
-        $authorization ="Authorization: Bearer ".$this->getToken();
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization ));
-        curl_setopt($curl, CURLOPT_URL, $this->url.$endpoint);
+
+        //Si pas de token on implémente pas le mème header
+        if ($this->token !== '') {
+            $authorization = "Authorization: Bearer " . $this->token;
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', $authorization));
+        }else{
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        }
+
+        curl_setopt($curl, CURLOPT_URL, $this->url . $endpoint);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 
         $result = curl_exec($curl);
