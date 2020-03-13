@@ -9,7 +9,7 @@ if (file_exists("conf.json")) {
     unset($json);
 
     $api = new API($url, $login, $password);
-    $api->login("POST", "/key/");
+    $api->post_login("/key/");
     $programs = json_decode($api->getFromEndpoint("/programs/"), true);
     $fp = fopen('programs.json', 'w+');
     $program_json = array();
@@ -23,6 +23,7 @@ if (file_exists("conf.json")) {
     );
 
     fclose($fp);
+
 } else {
     echo "Fichier de configuration inexistant";
 }

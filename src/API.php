@@ -16,7 +16,7 @@ class API
         $this->token = '';
     }
 
-    public function login($method,$endpoint)
+    public function post_login($endpoint)
     {
         $curl = curl_init();
 
