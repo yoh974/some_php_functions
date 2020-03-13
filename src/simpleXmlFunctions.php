@@ -5,6 +5,7 @@
  *
  * Execute xpath on simpleXmlElement and return a string or an array of strings
  *
+ * return empty string if result empty
  * @param SimpleXMLElement $simpleXMLElement
  * @param string $xpath
  * @param bool $multiple_results
