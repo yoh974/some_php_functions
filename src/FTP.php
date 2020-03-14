@@ -29,7 +29,7 @@ class FTP
     /**
      *
      */
-    public function getFTPFilesFromPromoter()
+    public function getFTPFiles()
     {
         $this->ftpConnect();
         $nb_files_downloaded = 1;
