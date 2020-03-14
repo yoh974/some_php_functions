@@ -50,7 +50,6 @@ class FTP
     public function ftp_sync($dir, &$nb_files_downloaded)
     {
 
-
         if ($dir !== ".") {
             if (ftp_chdir($this->conn_id, $dir) == false) {
                 $this->writeln("<error>Change Dir Failed: $dir<BR></error>");

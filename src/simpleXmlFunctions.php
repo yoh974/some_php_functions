@@ -17,8 +17,12 @@ function processXPath(SimpleXMLElement &$simpleXMLElement, string $xpath, $multi
 
     if ($xpath !== "./" && $xpath !== ".//" && $xpath !== "") {
 
+        if(!$XMLElement = $simpleXMLElement->xpath($xpath))
+        {
+            echo "Invalid xpath : $xpath \n";
+            return "";
+        }
 
-        $XMLElement = $simpleXMLElement->xpath($xpath);
         if (!$multiple_results) {
             if (is_array($XMLElement)) {
                 if (count($XMLElement) > 1 && trim(current($XMLElement)->__toString()) === "") {
