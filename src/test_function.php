@@ -1,7 +1,8 @@
 <?php
 require 'API.php';
+require 'time_functions.php';
 
-if (file_exists("conf.json")) {
+/*if (file_exists("conf.json")) {
     $json = json_decode(file_get_contents("conf.json"), true);
     $url = $json['URL'];
     $login = $json['LOGIN'];
@@ -26,5 +27,17 @@ if (file_exists("conf.json")) {
 
 } else {
     echo "Fichier de configuration inexistant";
-}
+}*/
+
+
+
+$time_start = microtime(true);
+
+sleep(10);
+
+$time_end = microtime(true);
+$time = convert_time(floor($time_end - $time_start));
+
+
+echo "$time\n";
 
