@@ -1,6 +1,7 @@
 <?php
 require 'API.php';
 require 'time_functions.php';
+require 'SimpleXMLPlugiMMO.php';
 
 /*if (file_exists("conf.json")) {
     $json = json_decode(file_get_contents("conf.json"), true);
@@ -31,7 +32,7 @@ require 'time_functions.php';
 
 
 
-$time_start = microtime(true);
+/*$time_start = microtime(true);
 
 sleep(10);
 
@@ -39,5 +40,6 @@ $time_end = microtime(true);
 $time = convert_time(floor($time_end - $time_start));
 
 
-echo "$time\n";
+echo "$time\n";*/
+
 
