@@ -2,6 +2,7 @@
 require 'API.php';
 require 'time_functions.php';
 require 'SimpleXMLPlugiMMO.php';
+require 'file_manipulation.php';
 
 /*if (file_exists("conf.json")) {
     $json = json_decode(file_get_contents("conf.json"), true);
@@ -43,3 +44,7 @@ $time = convert_time(floor($time_end - $time_start));
 echo "$time\n";*/
 
 
+while (true) {
+    $url = readline("\nurl : ");
+    getFileFromUrl($url);
+}
