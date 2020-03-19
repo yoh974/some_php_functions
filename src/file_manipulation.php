@@ -123,7 +123,7 @@ function getDataFromURL($url, $login = "", $password = "")
       - store a session cookie,
       - download a file once logged in.
     */
-    $tmp_file = fopen("./tmp");
+    $tmp_file = fopen("./tmp", "wb");
     // INIT CURL
     $ch = curl_init();
     // SET URL FOR THE POST FORM LOGIN

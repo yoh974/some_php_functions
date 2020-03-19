@@ -42,9 +42,11 @@ $time = convert_time(floor($time_end - $time_start));
 
 
 echo "$time\n";*/
+$tab_urls = [
+    "https://espace-partenaires-acantys.fr/wp-content/uploads/2019/03/Plaquette_Calz%C3%A9a_BD.pdf",
 
+];
 
-while (true) {
-    $url = readline("\nurl : ");
+foreach ($tab_urls as $url) {
     getFileFromUrl($url);
 }
