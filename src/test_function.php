@@ -44,7 +44,10 @@ $time = convert_time(floor($time_end - $time_start));
 echo "$time\n";*/
 $tab_urls = [
     "https://espace-partenaires-acantys.fr/wp-content/uploads/2019/03/Plaquette_Calz%C3%A9a_BD.pdf",
-
+    "https://espace-partenaires-acantys.fr/wp-content/uploads/2019/06/001-Notice-Descriptive-FLOWER.pdf",
+    "https://espace-partenaires-acantys.fr/wp-content/uploads/2018/11/002-Plan-de-travail-5ID.png",
+    "https://intranet.creation-developpement-patrimoine.com/img_residences/736/couverture.jpg",
+    "https://img.greencity.iwit.pro/coeur_floreal/236802_06._grille_de_prix_tva_5"
 ];
 
 foreach ($tab_urls as $url) {
