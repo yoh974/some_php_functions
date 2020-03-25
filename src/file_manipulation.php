@@ -124,6 +124,7 @@ function getDataFromURL($url, $login = "", $password = "")
       - download a file once logged in.
     */
     $filename = uniqid();
+    $filename .= "." . getExtentionFromurl($url);
     $tmp_file = fopen("./$filename", "wb");
     // INIT CURL
     $ch = curl_init();
@@ -156,6 +157,26 @@ function getDataFromURL($url, $login = "", $password = "")
         return true;
     }
 
+}
+
+function getExtentionFromurl($url)
+{
+    $headers = getHeaderFromURL($url);
+
+    if ($headers !== false) {
+        $headers = array_change_key_case($headers);
+    }
+
+    $param = 'content-type';
+    if (isset($headers[$param])) {
+        if (is_array($headers[$param])) {
+            $extension = (int)$headers[$param][1];
+        }
+        else {
+            $extension = $headers[$param];
+        }
+    }
+    return basename($extension);
 }
 
 function getHeaderFromURL($url, $login = "", $password = "", $method = 'GET')

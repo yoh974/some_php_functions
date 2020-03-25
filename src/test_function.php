@@ -3,6 +3,7 @@ require 'API.php';
 require 'time_functions.php';
 require 'SimpleXMLPlugiMMO.php';
 require 'file_manipulation.php';
+require 'convertion_function.php';
 
 /*if (file_exists("conf.json")) {
     $json = json_decode(file_get_contents("conf.json"), true);
@@ -32,7 +33,6 @@ require 'file_manipulation.php';
 }*/
 
 
-
 /*$time_start = microtime(true);
 
 sleep(10);
@@ -42,7 +42,7 @@ $time = convert_time(floor($time_end - $time_start));
 
 
 echo "$time\n";*/
-$tab_urls = [
+/*$tab_urls = [
     "https://espace-partenaires-acantys.fr/wp-content/uploads/2019/03/Plaquette_Calz%C3%A9a_BD.pdf",
     "https://espace-partenaires-acantys.fr/wp-content/uploads/2019/06/001-Notice-Descriptive-FLOWER.pdf",
     "https://espace-partenaires-acantys.fr/wp-content/uploads/2018/11/002-Plan-de-travail-5ID.png",
@@ -52,4 +52,7 @@ $tab_urls = [
 
 foreach ($tab_urls as $url) {
     getFileFromUrl($url);
-}
+}*/
+
+
+csv2xml("./csv2xml.csv", ";");
