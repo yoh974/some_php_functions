@@ -4,7 +4,7 @@ require 'time_functions.php';
 require 'SimpleXMLPlugiMMO.php';
 require 'file_manipulation.php';
 require 'convertion_function.php';
-
+require 'ArrayToXML.php';
 /*if (file_exists("conf.json")) {
     $json = json_decode(file_get_contents("conf.json"), true);
     $url = $json['URL'];
@@ -55,4 +55,10 @@ foreach ($tab_urls as $url) {
 }*/
 
 
-csv2xml("./csv2xml.csv", ";");
+/*csv2xml("./csv2xml.csv", ";");*/
+$array = ["programs" =>
+              ["program" =>
+                   ['name' => 'un programme', 'id' => 1564166, "lot" =>
+                       ["name" => "A206", "status" => "free"]]
+              ]];
+var_dump(ArrayToXml::convert($array));
